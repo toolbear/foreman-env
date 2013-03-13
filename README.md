@@ -24,10 +24,12 @@ Usage
       env
     end
 
-The file should contain key/value pairs, separated by =, with one key/value pair per line.
+The file should contain key/value pairs, separated by `=` or `: `, with one key/value pair per line.
 
     FOO=bar
     BAZ=qux
+
+    WALDO: where
 
 See [Foreman](https://github.com/ddollar/foreman) for more info.
 

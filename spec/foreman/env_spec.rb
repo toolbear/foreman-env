@@ -73,5 +73,17 @@ describe Foreman::Env, :fakefs do
 
       it { should include('FOO' => 'bar') }
     end
+
+    context "with YAML syntax subset" do
+      before do
+        File.open("/tmp/env", "w") do |f|
+          f.puts 'FOO: bar'
+          f.puts 'BAZ: "qux"'
+          f.puts 'WHEATLEY:         spaaaaaaaaaaace!'
+        end
+      end
+
+      it { should include('FOO' => 'bar', 'BAZ' => 'qux', 'WHEATLEY' => 'spaaaaaaaaaaace!') }
+    end
   end
 end
