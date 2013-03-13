@@ -63,5 +63,15 @@ describe Foreman::Env, :fakefs do
 
       it { should include('BAZ' => 'qux', 'FRED' => 'barney', 'OTHER' => 'escaped"quote') }
     end
+
+    context "with 'export' keyword" do
+      before do
+        File.open("/tmp/env", "w") do |f|
+          f.puts 'export FOO=bar'
+        end
+      end
+
+      it { should include('FOO' => 'bar') }
+    end
   end
 end
